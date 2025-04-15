@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 import alfaOnly from './assets/alfa_only.png';
 import rest_12 from './assets/rest_12.png';
 import taxi_2 from './assets/taxi.png';
-import toggle from './assets/toggle.png';
 import { LS, LSKeys } from './ls';
 import { appSt } from './style.css';
 import { ThxLayout } from './thx/ThxLayout';
@@ -39,12 +38,12 @@ export const App = () => {
   return (
     <>
       <div className={appSt.container}>
-        <img src={alfaOnly} width={158} height={33} className={appSt.img} />
-        <Typography.Text style={{ marginBottom: '1rem' }} view="primary-medium">
-          Перейдите на новый уровень
+        <img src={alfaOnly} width={158} height={38} className={appSt.img} />
+        <Typography.Text style={{ marginBottom: '3rem', textAlign: 'center' }} view="primary-medium">
+          Переведите деньги
+          <br />
+          на счета в Альфа-Банк
         </Typography.Text>
-
-        <img src={toggle} width={132} height={85} className={appSt.img} />
 
         <div className={appSt.switcher}>
           <div
@@ -74,10 +73,10 @@ export const App = () => {
             <PureCell.Content>
               <PureCell.Main>
                 <Typography.Text view="primary-medium" tag="p" defaultMargins={false}>
-                  12 визитов в бизнес-залы и рестораны в год
+                  Безлимитные посещения бизнес-залов и ресторанов
                 </Typography.Text>
                 <Typography.Text view="primary-small" color="secondary">
-                  Не чаще 2 раз в месяц
+                  В любое время
                 </Typography.Text>
               </PureCell.Main>
             </PureCell.Content>
@@ -89,10 +88,10 @@ export const App = () => {
             <PureCell.Content>
               <PureCell.Main>
                 <Typography.Text view="primary-medium" tag="p" defaultMargins={false}>
-                  2 поездки
+                  15 поездок на такси в год
                 </Typography.Text>
-                <Typography.Text view="primary-medium" tag="p" defaultMargins={false}>
-                  на такси в год
+                <Typography.Text view="primary-small" color="secondary">
+                  Не чаще 3 раз в месяц
                 </Typography.Text>
               </PureCell.Main>
             </PureCell.Content>
@@ -109,7 +108,7 @@ export const App = () => {
           Подробнее об условиях
         </Typography.Text>
       </div>
-      <Gap size={96} />
+      <Gap size={256} />
 
       <div className={appSt.bottomBtn}>
         <ButtonMobile
@@ -119,16 +118,24 @@ export const App = () => {
           view="primary"
           size={72}
           onClick={submit}
-          hint="Подключить"
+          hint="При остатке на счетах от* 6 млн ₽"
         >
           {selected === 'На 1 месяц' ? (
-            '5 000 ₽ в месяц'
+            'Подключить за 10 000 ₽ в мес.'
           ) : (
             <>
-              <s>60 000 ₽</s> <span style={{ color: '#FFD57B' }}>48 000 ₽ на год</span>
+              <s>120 000 ₽</s> <span style={{ color: '#FFD57B' }}>96 000 ₽ на год</span>
             </>
           )}
         </ButtonMobile>
+        <Typography.Text
+          view="primary-small"
+          tag="p"
+          defaultMargins={false}
+          style={{ color: '#51567D', textAlign: 'center' }}
+        >
+          * При остатке на счетах в Альфа-банке от 6 000 000 ₽
+        </Typography.Text>
       </div>
 
       <BottomSheet
@@ -138,7 +145,7 @@ export const App = () => {
         }}
         contentClassName={appSt.btmContent}
         actionButton={
-          <ButtonMobile block view="primary" onClick={() => setShowBs(false)}>
+          <ButtonMobile shape="rounded" block view="primary" onClick={() => setShowBs(false)}>
             Понятно
           </ButtonMobile>
         }
